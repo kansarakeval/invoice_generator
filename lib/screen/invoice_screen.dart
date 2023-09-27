@@ -17,7 +17,6 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
   TextEditingController txtType = TextEditingController();
   TextEditingController txtQuantity = TextEditingController();
   TextEditingController txtEarn = TextEditingController();
-  TextEditingController txtTotal = TextEditingController();
   double total = 0;
 
   @override
@@ -42,12 +41,6 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                 onPressed: () {},
                 icon: Icon(
                   Icons.share,
-                  color: Colors.white,
-                )),
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.print,
                   color: Colors.white,
                 )),
           ],
@@ -140,7 +133,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                               controller: txtEarn,
                               keyboardType: TextInputType.phone,
                               decoration: InputDecoration(
-                                hintText: "Bonus",
+                                hintText: "Price",
                               ),
                             ),
                           ),
@@ -152,24 +145,20 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                           children: [
                             TextButton(
                                 onPressed: () {
-                                  Global g1 = Global();
-                                  g1.InvoiceScreenList.addAll([
-                                    txtEarn.text,
-                                    txtQuantity.text,
-                                    txtType.text,
-                                    txtProduactName.text,
-                                    txtNo.text,
-                                    txtName.text
-                                  ]);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content:
-                                            Text("${g1.InvoiceScreenList}")),
-                                  );
                                   setState(() {
                                     total = double.parse(txtEarn.text) *
                                         double.parse(txtQuantity.text);
                                   });
+                                  Map m1 ={
+                                    "No" : txtNo.text,
+                                    "CustomerName" : txtName.text,
+                                    "Product" : txtProduactName.text,
+                                    "Quantity": txtQuantity,
+                                    "Earn": txtEarn,
+                                    "Total" : total,
+                                  };
+                                  Global.g1.InvoiceScreenList.add(m1);
+                                  Navigator.pushNamed(context, '/').then((e) {});
                                 },
                                 child: Text(
                                   "Submit",
@@ -182,8 +171,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                               height: 10,
                               color: Colors.grey.shade600,
                             ),
-                            Text(
-                              "Total Payment : ${total}",
+                            Text("Total Payment : ${total}",
                               style:
                                   TextStyle(color: Colors.black, fontSize: 20),
                             ),

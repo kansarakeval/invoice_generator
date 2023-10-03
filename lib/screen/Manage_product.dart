@@ -19,7 +19,7 @@ class _PastScreenState extends State<PastScreen> {
         appBar: AppBar(
           backgroundColor: grayprimary1,
           centerTitle: true,
-          title: Text(
+          title: const Text(
             "Manage Products",
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
@@ -28,7 +28,7 @@ class _PastScreenState extends State<PastScreen> {
                 onPressed: () {
                   Navigator.pushNamed(context, 'PDF');
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.print,
                   color: Colors.white,
                 )),
@@ -37,7 +37,7 @@ class _PastScreenState extends State<PastScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: Global.g1.InvoiceScreenList.map((e) => Container(
-              margin: EdgeInsets.all(5),
+              margin: const EdgeInsets.all(5),
               height: 100,
               width: double.infinity,
               decoration: BoxDecoration(
@@ -52,24 +52,24 @@ class _PastScreenState extends State<PastScreen> {
                         children: [
                           Row(
                             children: [
-                              Text("No: ${e['No']}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                              SizedBox(width: 20,),
-                              Text("${e['CustomerName']}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                              Text("No: ${e['No']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                              const SizedBox(width: 20,),
+                              Text("${e['CustomerName']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                             ],
                           ),
-                          Text("Product: ${e['Product']}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          Text("Product: ${e['Product']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                           InkWell(
                             onTap: () {
                               setState(() {
                                 Global.g1.InvoiceScreenList.remove(e);
                               });
                             },
-                              child: Icon(Icons.delete)),
+                              child: const Icon(Icons.delete)),
                         ],
                       ),
                     ),
-                    Spacer(),
-                    Text("${e['Total']}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    const Spacer(),
+                    Text("${e['Total']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                   ],
                 ),
               ),
@@ -78,9 +78,13 @@ class _PastScreenState extends State<PastScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.pushNamed(context, 'invoice');
+            Navigator.pushNamed(context, 'invoice').then((value){
+              setState(() {
+
+              });
+            },);
           },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
       ),
     );

@@ -27,19 +27,19 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
           backgroundColor: grayprimary1,
           leading: IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.menu,
                 color: Colors.white,
               )),
           centerTitle: true,
-          title: Text(
+          title: const Text(
             "Invoice Genrator",
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.share,
                   color: Colors.white,
                 )),
@@ -71,20 +71,20 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                           hintText: "Choose Customer Name",
                           suffixIcon: IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.arrow_drop_down)),
+                              icon: const Icon(Icons.arrow_drop_down)),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       TextField(
                         keyboardType: TextInputType.phone,
                         controller: txtNo,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: "Invoice No.",
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Align(
@@ -100,15 +100,15 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                           hintText: "Choose Product",
                           suffixIcon: IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.arrow_drop_down)),
+                              icon: const Icon(Icons.arrow_drop_down)),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       TextField(
                         controller: txtType,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: "Type",
                         ),
                       ),
@@ -119,12 +119,12 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                             child: TextField(
                               controller: txtQuantity,
                               keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: "Quantity",
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 50,
                           ),
                           SizedBox(
@@ -132,7 +132,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                             child: TextField(
                               controller: txtEarn,
                               keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: "Price",
                               ),
                             ),
@@ -158,7 +158,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                                     "Total" : total,
                                   };
                                   Global.g1.InvoiceScreenList.add(m1);
-                                  Navigator.pushNamed(context, '/').then((e) {});
+                                  Navigator.pop(context);
                                 },
                                 child: Text(
                                   "Submit",
@@ -173,7 +173,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                             ),
                             Text("Total Payment : ${total}",
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                                  const TextStyle(color: Colors.black, fontSize: 20),
                             ),
                           ],
                         ),
